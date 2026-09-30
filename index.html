@@ -3,91 +3,121 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Sir Ajay Kumar — Security Alert</title>
+<title>Sir Ajay Kumar — Farewell (Copy)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0B1020;--surface:#131A2E;--border:#26304D;--text:#E8ECF8;--muted:#9AA6C7;
-  --blue:#4F7CFF;--cyan:#22D3EE;--red:#FF5C7A;--green:#34D399;--gold:#FBBF24;
-  --font:"Inter","Segoe UI","Segoe UI Symbol","Helvetica Neue",Arial,sans-serif;
-  --serif:"Playfair Display",Georgia,serif;
+  --bg:#07111F;--panel:#0D1B30;--panel2:#12233D;--text:#F8FBFF;--muted:#AEBBD0;
+  --blue:#48A7FF;--cyan:#55E4DF;--purple:#9B7CFF;--pink:#FF5EBC;--yellow:#FFD84D;--orange:#FF9F43;
+  --body:"DM Sans","Segoe UI",Arial,sans-serif;
+  --head:"Space Grotesk","DM Sans","Segoe UI",Arial,sans-serif;
+  --serif:Georgia,"Times New Roman",serif;
   box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
 }
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden;
-  background-image:radial-gradient(900px 500px at 15% -10%,rgba(79,124,255,.25),transparent),radial-gradient(700px 500px at 100% 110%,rgba(34,211,238,.15),transparent)}
-.siren{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 45%,rgba(255,92,122,.28));animation:pulse 1.2s infinite alternate;z-index:1}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(900px 520px at 10% -10%,rgba(155,124,255,.28),transparent),radial-gradient(800px 520px at 100% 110%,rgba(72,167,255,.2),transparent)}
+.siren{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 45%,rgba(255,94,188,.25));animation:pulse 1.2s infinite alternate;z-index:1}
 @keyframes pulse{from{opacity:.1}to{opacity:1}}
-#aura{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;z-index:60;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(251,191,36,.5);padding:6px 10px;border-radius:999px;background:rgba(11,16,32,.85);backdrop-filter:blur(6px)}
-.screen{display:none;position:relative;z-index:2;min-height:100vh;padding:64px 20px 32px;flex-direction:column;align-items:center;justify-content:center;text-align:center;max-width:680px;margin:0 auto}
+#aura{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;z-index:60;font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--yellow);border:1px solid rgba(255,216,77,.5);padding:6px 10px;border-radius:999px;background:rgba(7,17,31,.85);backdrop-filter:blur(6px)}
+#prog{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);left:10px;z-index:60;font-size:12px;font-weight:700;color:var(--muted);border:1px solid rgba(174,187,208,.3);padding:6px 10px;border-radius:999px;background:rgba(7,17,31,.85);backdrop-filter:blur(6px);display:flex;align-items:center;gap:8px}
+#dots{display:flex;gap:4px}
+#dots i{width:7px;height:7px;border-radius:50%;background:#2a3a58}
+#dots i.on{background:var(--cyan)}
+#dots i.now{background:var(--pink);box-shadow:0 0 8px var(--pink)}
+.screen{display:none;position:relative;z-index:2;min-height:100vh;padding:68px 20px 32px;flex-direction:column;align-items:center;justify-content:center;text-align:center;max-width:680px;margin:0 auto}
 .screen.active{display:flex;animation:in .5s}
 @keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-h1{font-size:clamp(26px,7vw,44px);font-weight:900;letter-spacing:-.02em;margin:.3em 0;line-height:1.15}
-h2{font-size:clamp(20px,5vw,28px);font-weight:800;margin:.3em 0}
-.red{color:var(--red)}.green{color:var(--green)}.gold{color:var(--gold)}.blue{color:var(--blue)}.cyan{color:var(--cyan)}
-.inf{font-family:var(--font);font-weight:800}
-.glitch{position:relative;animation:shake .35s infinite}
+h1,h2{font-family:var(--head);margin:.3em 0;line-height:1.15}
+h1{font-size:clamp(26px,7vw,44px);font-weight:700;letter-spacing:-.02em}
+h2{font-size:clamp(20px,5vw,28px);font-weight:700}
+.pink{color:var(--pink)}.cyan{color:var(--cyan)}.yellow{color:var(--yellow)}.blue{color:var(--blue)}.orange{color:var(--orange)}
+.inf{display:inline-block;width:1.25em;height:.7em;vertical-align:-.05em}
+.inf path{fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.glitch{position:relative;animation:shake .35s infinite;display:inline-block}
 .glitch:before,.glitch:after{content:attr(data-t);position:absolute;left:0;right:0;top:0}
 .glitch:before{color:var(--cyan);transform:translate(-2px,0);mix-blend-mode:screen;clip-path:inset(0 0 55% 0)}
-.glitch:after{color:var(--red);transform:translate(2px,0);mix-blend-mode:screen;clip-path:inset(55% 0 0 0)}
+.glitch:after{color:var(--pink);transform:translate(2px,0);mix-blend-mode:screen;clip-path:inset(55% 0 0 0)}
 @keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-1px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,-1px)}}
-.card{border:1px solid var(--border);background:linear-gradient(180deg,var(--surface),#0F1526);padding:20px;border-radius:16px;width:100%;margin:14px 0;box-shadow:0 10px 40px rgba(0,0,0,.4);text-align:left}
-.card p{margin:10px 0;line-height:1.5}
-.card.alert{border-color:rgba(255,92,122,.6);box-shadow:0 0 30px rgba(255,92,122,.2)}
-.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(52,211,153,.15);color:var(--green);font-weight:800;font-size:14px}
-button{font:inherit;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),#6C5CFF);border:0;padding:14px 24px;border-radius:12px;margin:8px;font-size:16px;box-shadow:0 8px 24px rgba(79,124,255,.4);transition:transform .15s}
+.card{border:1px solid rgba(155,124,255,.3);background:linear-gradient(180deg,var(--panel2),var(--panel));padding:20px;border-radius:18px;width:100%;margin:14px 0;box-shadow:0 10px 40px rgba(0,0,0,.4);text-align:left}
+.card p{margin:10px 0;line-height:1.55}
+.card.alert{border-color:rgba(255,94,188,.55);box-shadow:0 0 30px rgba(255,94,188,.18)}
+.badge{display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(85,228,223,.15);color:var(--cyan);font-weight:700;font-size:14px}
+button{font:inherit;font-weight:700;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),var(--purple));border:0;padding:14px 24px;border-radius:14px;margin:8px;font-size:16px;box-shadow:0 8px 24px rgba(72,167,255,.4);transition:transform .15s}
 button:hover{transform:translateY(-2px) scale(1.03)}
-button.alt{background:linear-gradient(135deg,var(--red),#FF8A5C);box-shadow:0 8px 24px rgba(255,92,122,.4)}
-button.ghost{background:transparent;border:1px solid var(--border);box-shadow:none;color:var(--text)}
-.row{margin:16px 0;text-align:left;width:100%;font-size:15px}
-.bar{height:12px;background:#1d2645;border-radius:8px;overflow:hidden;margin-top:6px}
+button.alt{background:linear-gradient(135deg,var(--pink),var(--orange));box-shadow:0 8px 24px rgba(255,94,188,.4)}
+.row{margin:16px 0;width:100%;font-size:15px}
+.bar{height:12px;background:#1d2d4a;border-radius:8px;overflow:hidden;margin-top:6px}
 .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.6s ease-out;border-radius:8px}
-.bar.bad i{background:var(--red)}
-.bar.flick i{background:linear-gradient(90deg,var(--gold),var(--red));animation:flick .4s infinite alternate}
+.bar.bad i{background:var(--pink)}
+.bar.flick i{background:linear-gradient(90deg,var(--yellow),var(--orange),var(--pink));animation:flick .4s infinite alternate}
 @keyframes flick{from{opacity:.3}to{opacity:1}}
 .line{opacity:0;transform:translateX(-20px);transition:all .5s;margin:12px 0;line-height:1.5}
 .line.show{opacity:1;transform:none}
-.stamp{display:inline-block;border:3px solid var(--green);color:var(--green);padding:8px 14px;border-radius:8px;font-size:clamp(16px,4.6vw,24px);font-weight:900;transform:rotate(-5deg) scale(3);opacity:0;transition:all .4s cubic-bezier(.2,2,.4,1)}
+.stamp{display:inline-block;border:3px solid var(--cyan);color:var(--cyan);padding:8px 14px;border-radius:10px;font-family:var(--head);font-size:clamp(16px,4.6vw,24px);font-weight:700;transform:rotate(-5deg) scale(3);opacity:0;transition:all .4s cubic-bezier(.2,2,.4,1)}
 .stamp.show{transform:rotate(-5deg) scale(1);opacity:1}
-.err{font-size:clamp(60px,20vw,130px);font-weight:900;color:var(--red);margin:0;line-height:1}
-.pbar{width:100%;height:24px;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:#1d2645}
-.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#FF8A5C);transition:width 2.4s linear}
+.big{font-size:clamp(64px,20vw,110px);margin:0;line-height:1}
+.pbar{width:100%;height:24px;border:1px solid rgba(255,94,188,.4);border-radius:999px;overflow:hidden;background:#1d2d4a}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--pink),var(--orange));transition:width 2.4s linear}
 .hidden{display:none!important}
-.msg{font-family:var(--serif);font-size:clamp(17px,4.4vw,22px);line-height:1.7;color:#fff}
-.legend{font-size:clamp(22px,6vw,36px);font-weight:900;color:var(--gold);text-shadow:0 0 24px rgba(251,191,36,.6);margin:0}
-.cert{width:100%;background:linear-gradient(160deg,#0F1733,#0B1020);color:#E8ECF8;border:2px solid var(--gold);outline:6px solid rgba(251,191,36,.25);outline-offset:-12px;border-radius:12px;padding:32px 20px;font-family:var(--serif);margin-top:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-.cert h3{margin:0;font-size:clamp(20px,5vw,28px);letter-spacing:3px;color:var(--gold)}
-.cert .name{font-size:clamp(28px,8vw,46px);font-weight:800;color:#fff;margin:10px 0}
-.cert ul{list-style:none;padding:0;text-align:left;display:inline-block;margin:8px 0;font-family:var(--font);font-size:15px}
+.hint{margin-top:16px;padding:10px 16px;border-radius:999px;background:rgba(155,124,255,.15);border:1px solid rgba(155,124,255,.4);color:var(--text);font-weight:500;font-size:15px}
+.dotsAnim:after{content:"";animation:d 1.2s steps(4) infinite}
+@keyframes d{0%{content:""}25%{content:"."}50%{content:".."}75%{content:"..."}}
+.msg{font-family:var(--serif);font-size:clamp(17px,4.4vw,22px);line-height:1.75;color:var(--text)}
+.legend{font-family:var(--head);font-size:clamp(22px,6vw,36px);font-weight:700;color:var(--yellow);text-shadow:0 0 24px rgba(255,216,77,.5);margin:0}
+.sub{font-family:var(--head);font-size:18px;font-weight:500;color:var(--cyan);margin:6px 0}
+.logo{font-family:var(--head);font-weight:700}
+.logo .g{color:#fff}.logo .ai{color:var(--blue)}
+
+/* Certificate: light, colourful, prints well */
+.cert{width:100%;background:#F8FBFF;color:#12233D;border:7px solid #9B7CFF;outline:3px solid #FF5EBC;outline-offset:-16px;border-radius:14px;padding:22px 20px 26px;font-family:var(--serif);margin-top:18px;text-align:center;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.stripe{display:flex;gap:0;margin:0 -6px 14px}
+.stripe i{flex:1;border-top:8px solid}
+.cert .stars{font-size:22px;letter-spacing:6px}
+.cert h3{margin:6px 0;font-family:var(--head);font-size:clamp(20px,5.4vw,30px);letter-spacing:2px;color:#5B3FD9}
+.cert .small{margin:6px 0;font-style:italic;color:#4b5b78}
+.cert .name{display:inline-block;font-family:var(--head);font-weight:700;font-size:clamp(28px,8vw,46px);color:#07111F;margin:4px 0 10px;padding:0 10px 4px;border-bottom:4px solid #FF5EBC}
+.cert .ach{font-family:var(--head);font-weight:700;color:#0d6fd1;margin:10px 0 4px;font-size:16px}
+.cert ul{list-style:none;padding:0;text-align:left;display:inline-block;margin:6px 0;font-size:16px}
 .cert li{margin:7px 0}
-.cert .status{display:inline-block;border:2px solid var(--green);color:var(--green);font-family:var(--font);font-weight:800;padding:6px 14px;border-radius:8px;transform:rotate(-3deg);margin:10px}
-.cert small{font-family:var(--font);color:var(--muted)}
-.by{font-family:var(--font);font-weight:900;font-size:18px;letter-spacing:.02em;margin-top:14px}
-.by .g{color:#fff}.by .ai{color:var(--blue)}
+.cert .status{display:inline-block;margin:12px 0 4px;padding:8px 18px;border-radius:999px;border:2px solid #FF9F43;background:#FFD84D;box-shadow:inset 0 0 0 40px #FFD84D;color:#07111F;font-family:var(--head);font-weight:700;letter-spacing:.5px;transform:rotate(-2deg)}
+.cert .issued{margin:14px 0 4px;font-size:16px}
+.cert .date{color:#4b5b78;font-size:14px}
+.cert .by{display:inline-block;margin-top:14px;padding:8px 18px;border-radius:12px;background:#07111F;box-shadow:inset 0 0 0 60px #07111F;font-family:var(--head);font-weight:700;font-size:18px}
+.cert .by .g{color:#fff}.cert .by .ai{color:#48A7FF}
 .fall{position:fixed;top:-30px;z-index:70;pointer-events:none;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+
+@page{size:A4 landscape;margin:0}
 @media print{
-  body{background:#fff!important}
-  .siren,#aura,.noprint,.fall{display:none!important}
-  .screen:not(#s6){display:none!important}
-  #s6{display:flex!important;min-height:0;padding:0}
-  #s6>.legend,#s6>.sub{display:none!important}
+  html,body{background:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{margin:0;padding:0}
+  .siren,#aura,#prog,.fall,.noprint{display:none!important}
+  .screen:not(#s7){display:none!important}
+  #s7{display:block!important;min-height:0;padding:9mm;max-width:none;margin:0;animation:none}
+  #s7>*:not(.cert){display:none!important}
+  .cert{margin:0;padding:8mm 10mm;page-break-inside:avoid;break-inside:avoid}
+  .cert h3{font-size:24pt}.cert .name{font-size:32pt}.cert .stars{font-size:16pt}
+  .cert ul{font-size:12pt;column-count:2;column-gap:14mm}
+  .cert li{margin:4px 0;break-inside:avoid}
+  .cert .issued{font-size:12pt}.cert .status{font-size:13pt}
 }
 </style>
 </head>
 <body>
 <div class="siren"></div>
+<div id="prog"><span id="progTxt">Part 1 of 7</span><span id="dots"></span></div>
 <div id="aura">AURA: <span id="auraNum">0</span></div>
 
 <!-- 1 -->
 <section class="screen active" id="s1">
-  <h1 class="red glitch" data-t="🚨 SCHOOL SECURITY ALERT 🚨">🚨 SCHOOL SECURITY ALERT 🚨</h1>
+  <h1 class="pink glitch" data-t="🚨 SCHOOL SECURITY ALERT 🚨">🚨 SCHOOL SECURITY ALERT 🚨</h1>
   <div class="card alert">
     <p>A teacher is attempting to leave the premises.</p>
-    <p>IDENTIFIED: <b class="gold">Sir Ajay Kumar</b></p>
+    <p>IDENTIFIED: <b class="yellow" style="font-family:var(--head)">Sir Ajay Kumar</b></p>
     <p>Subject: Physics ⚡</p>
     <p>Threat Level: <span class="badge">Extremely Friendly 😂</span></p>
   </div>
@@ -99,27 +129,27 @@ button.ghost{background:transparent;border:1px solid var(--border);box-shadow:no
   <h2 class="cyan">🧪 SIR AJAY KUMAR — PHYSICS REPORT</h2>
   <div class="card">
     <div class="row">⚡ Physics knowledge: <b>100%</b><div class="bar"><i data-w="100"></i></div></div>
-    <div class="row">😂 Jokes with students: <b><span class="inf">∞</span>%</b><div class="bar"><i data-w="100"></i></div></div>
+    <div class="row">😂 Jokes with students: <b><svg class="inf" viewBox="0 0 24 14" aria-label="infinity"><path d="M12 7C10 4 8.5 2.5 6.5 2.5a4.5 4.5 0 0 0 0 9C8.5 11.5 10 10 12 7C14 4 15.5 2.5 17.5 2.5a4.5 4.5 0 0 1 0 9C15.5 11.5 14 10 12 7Z"/></svg>%</b><div class="bar"><i data-w="100"></i></div></div>
     <div class="row">🛡️ Protecting students from Principal: <b>99.99%</b><div class="bar"><i data-w="99.99"></i></div></div>
     <div class="row">📱 Detecting mobile phones: <b>0%</b><div class="bar bad"><i data-w="1"></i></div><small style="color:var(--muted)">(when he chooses not to detect them 😭)</small></div>
-    <div class="row">🤐 Keeping student secrets: <b class="gold">LEGENDARY</b><div class="bar"><i data-w="100"></i></div></div>
-    <div class="row">😎 Aura level: <b class="red glitch" data-t="ERROR">ERROR</b> <small style="color:var(--muted)">(too high to measure)</small><div class="bar flick"><i data-w="100"></i></div></div>
-    <p>👨‍🏫 Teacher ❌<br>🤝 <b class="green">Friend disguised as teacher</b></p>
+    <div class="row">🤐 Keeping student secrets: <b class="yellow">LEGENDARY</b><div class="bar"><i data-w="100"></i></div></div>
+    <div class="row">😎 Aura level: <b class="pink glitch" data-t="METER BROKEN 🔧">METER BROKEN 🔧</b> <small style="color:var(--muted)">(too high to measure)</small><div class="bar flick"><i data-w="100"></i></div></div>
+    <p>👨‍🏫 Teacher ❌<br>🤝 <b class="cyan">Friend disguised as teacher</b></p>
   </div>
   <button onclick="go(3)">OPEN CLASSIFIED FILE 🔓</button>
 </section>
 
 <!-- 3 -->
 <section class="screen" id="s3">
-  <h2 class="red">🚨 CLASSIFIED FILE</h2>
+  <h2 class="pink">🚨 CLASSIFIED FILE</h2>
   <div class="card alert">
-    <p class="red"><b>CONFIDENTIAL — DO NOT SHOW PRINCIPAL</b></p>
+    <p class="pink"><b>CONFIDENTIAL — DO NOT SHOW PRINCIPAL</b></p>
     <p>Sir Ajay has been involved in several suspicious activities:</p>
     <div class="line">📱 Ignoring students using mobile phones</div>
     <div class="line">🛡️ Protecting students during Principal investigations</div>
     <div class="line">😂 Making the class laugh during physics</div>
     <div class="line">🤐 Knowing things he definitely should not know</div>
-    <div class="line">😎 Carrying so much aura that our scanners crashed</div>
+    <div class="line">😎 Carrying so much aura that our scanners broke</div>
     <div class="line">❤️ Treating students like friends</div>
     <p>CASE STATUS:</p>
     <div class="stamp" id="stamp">TOO WHOLESOME TO ARREST ❤️</div>
@@ -129,61 +159,68 @@ button.ghost{background:transparent;border:1px solid var(--border);box-shadow:no
 
 <!-- 4 -->
 <section class="screen" id="s4">
-  <h2 class="gold">😂 FINAL EXIT INTERVIEW</h2>
+  <h2 class="yellow">😂 FINAL EXIT INTERVIEW</h2>
   <div id="ask">
-    <p style="font-size:22px;font-weight:600">Sir, why are you leaving?</p>
+    <p style="font-size:22px;font-weight:500">Sir, why are you leaving?</p>
     <button onclick="pick('leave')">Career 😎</button>
     <button onclick="pick('leave')">New Adventure 🚀</button>
     <button onclick="pick('leave')">You guys finally became too much 😂</button>
     <button class="alt" onclick="pick('stay')">I'M NOT LEAVING</button>
   </div>
-  <div id="e404" class="hidden">
-    <p class="err glitch" data-t="ERROR 404">ERROR 404</p>
-    <p class="red" style="font-size:22px;font-weight:800">Correct answer not found.</p>
-    <p class="gold" style="font-size:20px">Sir Ajay is officially impossible to replace. 💀</p>
+  <div id="no" class="hidden">
+    <p class="big">🙅‍♂️</p>
+    <h1 class="pink" style="font-size:clamp(26px,7vw,40px)">Answer not accepted!</h1>
+    <p style="font-size:19px">Sorry Sir, the students have not approved any of these reasons.</p>
+    <p class="yellow" style="font-size:20px;font-weight:700">Sir Ajay is officially impossible to replace. 💀</p>
     <button class="alt" onclick="go(5)">REMOVE HIM ANYWAY</button>
   </div>
   <div id="stay" class="hidden">
-    <p class="err green" style="font-size:clamp(50px,16vw,100px);color:var(--green)">✅ 200 OK</p>
-    <p class="green" style="font-size:22px;font-weight:800">Correct answer found!</p>
-    <p class="gold" style="font-size:20px">Resignation rejected by the whole Matric (10th) class. 🎉</p>
-    <p style="color:var(--muted)">Sir Ajay is staying. (In our hearts, forever.)</p>
+    <p class="big">🎉</p>
+    <h1 class="cyan" style="font-size:clamp(26px,7vw,40px)">Correct answer!</h1>
+    <p class="yellow" style="font-size:20px;font-weight:700">Resignation rejected by the whole Matric (10th) class.</p>
+    <p style="color:var(--muted);font-size:17px">Sir Ajay is staying. (In our hearts, forever.)</p>
     <button onclick="go(5)">Nice try, Sir 😄 — continue</button>
   </div>
 </section>
 
 <!-- 5 -->
 <section class="screen" id="s5">
-  <div id="fail">
-    <h1 class="red glitch" data-t="🚨 SYSTEM FAILURE 🚨">🚨 SYSTEM FAILURE 🚨</h1>
-    <p>Attempting to remove Sir Ajay Kumar...</p>
-    <div class="pbar"><i id="pb"></i></div>
-    <p id="pct" style="font-size:22px;font-weight:800">0%</p>
-    <div id="failed" class="hidden">
-      <p class="err" style="font-size:56px">❌ FAILED</p>
-      <p class="gold">Reason: “This teacher has too many memories attached to him.”</p>
-    </div>
-  </div>
-  <div id="heart" class="hidden">
-    <p class="msg">Sir, jokes apart...<br><br>
-    You weren't just our Physics teacher.<br>
-    You were the teacher who joked with us, protected us, understood us, and stood by us when we needed it.<br><br>
-    We'll definitely miss having you around.<br>
-    Thank you for being more than just a teacher. ❤️<br><br>
-    <i>— Your Students</i></p>
-    <button onclick="go(6)">One last thing... 🏆</button>
+  <h1 class="pink glitch" data-t="🚨 SYSTEM FAILURE 🚨">🚨 SYSTEM FAILURE 🚨</h1>
+  <p>Attempting to remove Sir Ajay Kumar...</p>
+  <div class="pbar"><i id="pb"></i></div>
+  <p id="pct" style="font-size:22px;font-weight:700;font-family:var(--head)">0%</p>
+  <div class="hint">🎁 Don't leave yet — 2 more surprises are coming after this!</div>
+  <div id="failed" class="hidden" style="margin-top:14px">
+    <p style="font-family:var(--head);font-size:44px;font-weight:700;margin:6px 0" class="pink">❌ FAILED</p>
+    <p class="yellow" style="font-size:19px">Reason: “This teacher has too many memories attached to him.”</p>
+    <div class="hint">💌 A message from your students is loading<span class="dotsAnim"></span></div>
+    <button class="ghostbtn" onclick="go(6)" style="background:transparent;border:1px solid var(--muted);box-shadow:none;color:var(--muted);font-size:14px;padding:8px 16px">Skip ➜</button>
   </div>
 </section>
 
 <!-- 6 -->
 <section class="screen" id="s6">
+  <p class="msg">Sir, jokes apart...<br><br>
+  You weren't just our Physics teacher.<br>
+  You were the teacher who joked with us, protected us, understood us, and stood by us when we needed it.<br><br>
+  We'll definitely miss having you around.<br>
+  Thank you for being more than just a teacher. ❤️<br><br>
+  <i>— Your Students</i></p>
+  <div class="hint">🏆 One last surprise is waiting for you</div>
+  <button onclick="go(7)">Open the surprise ➜</button>
+</section>
+
+<!-- 7 -->
+<section class="screen" id="s7">
   <p class="legend">⚡ SIR AJAY KUMAR ⚡</p>
-  <p class="gold sub" style="font-size:18px;font-weight:600">PHYSICS TEACHER → CLASS LEGEND</p>
+  <p class="sub">PHYSICS TEACHER → CLASS LEGEND</p>
   <div class="cert">
+    <div class="stripe"><i style="border-color:#48A7FF"></i><i style="border-color:#55E4DF"></i><i style="border-color:#9B7CFF"></i><i style="border-color:#FF5EBC"></i><i style="border-color:#FF9F43"></i><i style="border-color:#FFD84D"></i></div>
+    <div class="stars">⭐⭐⭐</div>
     <h3>CERTIFICATE OF CLASS LEGEND</h3>
-    <p style="color:var(--muted)">Awarded to</p>
+    <p class="small">Awarded to</p>
     <div class="name">SIR AJAY KUMAR</div>
-    <p style="color:var(--muted)">For outstanding achievement in:</p>
+    <p class="ach">For outstanding achievement in:</p>
     <ul>
       <li>⚡ Teaching Physics</li>
       <li>😂 Making students laugh</li>
@@ -193,16 +230,23 @@ button.ghost{background:transparent;border:1px solid var(--border);box-shadow:no
       <li>😎 Aura beyond measurement</li>
       <li>❤️ Being a teacher AND a friend</li>
     </ul>
-    <div><small>Status:</small><br><span class="status">LEGEND — CANNOT BE REPLACED</span></div>
-    <p>Issued by the students of <b>Matric (10th)</b><br><small>30 September 2026</small></p>
+    <div><span class="status">🏆 LEGEND — CANNOT BE REPLACED</span></div>
+    <p class="issued">Issued by <b>Gorav</b> &amp; the students of <b>Matric (10th)</b></p>
+    <p class="date">30 September 2026</p>
     <div class="by">By <span class="g">Gorav</span><span class="ai">AI</span></div>
   </div>
   <button class="noprint" onclick="window.print()">🖨️ PRINT CERTIFICATE</button>
   <button class="noprint alt" onclick="party()">🎉 AURA +99999</button>
+  <p class="noprint" style="color:var(--muted);font-size:13px;margin:4px 0 0">Tip: in the print window, choose Colour and turn on “Background graphics”.</p>
 </section>
 
 <script>
-var aura = 0, timers = [], auraIv = null;
+var TOTAL = 7, aura = 0, timers = [], auraIv = null;
+(function(){ var d = document.getElementById("dots"); for(var i=0;i<TOTAL;i++) d.appendChild(document.createElement("i")); })();
+function setProg(n){
+  document.getElementById("progTxt").textContent = "Part " + n + " of " + TOTAL;
+  document.querySelectorAll("#dots i").forEach(function(el,i){ el.className = i+1 < n ? "on" : (i+1 === n ? "now" : ""); });
+}
 function addAura(n){
   var end = aura + n, t = aura, el = document.getElementById("auraNum");
   aura = end;
@@ -215,6 +259,7 @@ function go(n){
   document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
   document.getElementById("s"+n).classList.add("active");
   window.scrollTo(0,0);
+  setProg(n);
   addAura(n*1000);
   if(n === 2){
     document.querySelectorAll("#s2 .bar i").forEach(function(i){ i.style.width = "0"; setTimeout(function(){ i.style.width = i.dataset.w + "%"; }, 100); });
@@ -226,11 +271,11 @@ function go(n){
   }
   if(n === 4){
     document.getElementById("ask").classList.remove("hidden");
-    document.getElementById("e404").classList.add("hidden");
+    document.getElementById("no").classList.add("hidden");
     document.getElementById("stay").classList.add("hidden");
   }
   if(n === 5) runFail();
-  if(n === 6) party();
+  if(n === 7) party();
 }
 function pick(choice){
   document.getElementById("ask").classList.add("hidden");
@@ -239,24 +284,19 @@ function pick(choice){
     addAura(10000);
     party();
   } else {
-    document.getElementById("e404").classList.remove("hidden");
-    addAura(404);
+    document.getElementById("no").classList.remove("hidden");
+    addAura(500);
     document.body.animate([{transform:"translateX(-12px)"},{transform:"translateX(12px)"},{transform:"none"}],{duration:300,iterations:3});
   }
 }
 function runFail(){
   var pb = document.getElementById("pb"), pct = document.getElementById("pct");
-  document.getElementById("fail").classList.remove("hidden");
-  document.getElementById("heart").classList.add("hidden");
   document.getElementById("failed").classList.add("hidden");
   pb.style.transition = "none"; pb.style.width = "0"; pct.textContent = "0%";
   timers.push(setTimeout(function(){ pb.style.transition = "width 2.4s linear"; pb.style.width = "100%"; }, 50));
   var p = 0, iv = setInterval(function(){ p += 4; if(p >= 100){ p = 100; clearInterval(iv); } pct.textContent = p + "%"; }, 100);
   timers.push(setTimeout(function(){ document.getElementById("failed").classList.remove("hidden"); }, 2700));
-  timers.push(setTimeout(function(){
-    document.getElementById("fail").classList.add("hidden");
-    document.getElementById("heart").classList.remove("hidden");
-  }, 6500));
+  timers.push(setTimeout(function(){ go(6); }, 6500));
 }
 function party(){
   addAura(99999);
@@ -272,6 +312,7 @@ function party(){
     setTimeout((function(x){ return function(){ x.remove(); }; })(s), 6500);
   }
 }
+setProg(1);
 </script>
 </body>
 </html>
