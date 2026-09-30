@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sir Ajay Kumar — Security Alert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Playfair+Display:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0B1020;--surface:#131A2E;--border:#26304D;--text:#E8ECF8;--muted:#9AA6C7;
+  --blue:#4F7CFF;--cyan:#22D3EE;--red:#FF5C7A;--green:#34D399;--gold:#FBBF24;
+  --font:"Inter","Segoe UI","Segoe UI Symbol","Helvetica Neue",Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh;overflow-x:hidden;
+  background-image:radial-gradient(900px 500px at 15% -10%,rgba(79,124,255,.25),transparent),radial-gradient(700px 500px at 100% 110%,rgba(34,211,238,.15),transparent)}
+.siren{position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle,transparent 45%,rgba(255,92,122,.28));animation:pulse 1.2s infinite alternate;z-index:1}
+@keyframes pulse{from{opacity:.1}to{opacity:1}}
+#aura{position:fixed;top:calc(env(safe-area-inset-top,0px) + 10px);right:10px;z-index:60;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(251,191,36,.5);padding:6px 10px;border-radius:999px;background:rgba(11,16,32,.85);backdrop-filter:blur(6px)}
+.screen{display:none;position:relative;z-index:2;min-height:100vh;padding:64px 20px 32px;flex-direction:column;align-items:center;justify-content:center;text-align:center;max-width:680px;margin:0 auto}
+.screen.active{display:flex;animation:in .5s}
+@keyframes in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+h1{font-size:clamp(26px,7vw,44px);font-weight:900;letter-spacing:-.02em;margin:.3em 0;line-height:1.15}
+h2{font-size:clamp(20px,5vw,28px);font-weight:800;margin:.3em 0}
+.red{color:var(--red)}.green{color:var(--green)}.gold{color:var(--gold)}.blue{color:var(--blue)}.cyan{color:var(--cyan)}
+.inf{font-family:var(--font);font-weight:800}
+.glitch{position:relative;animation:shake .35s infinite}
+.glitch:before,.glitch:after{content:attr(data-t);position:absolute;left:0;right:0;top:0}
+.glitch:before{color:var(--cyan);transform:translate(-2px,0);mix-blend-mode:screen;clip-path:inset(0 0 55% 0)}
+.glitch:after{color:var(--red);transform:translate(2px,0);mix-blend-mode:screen;clip-path:inset(55% 0 0 0)}
+@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(-1px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,-1px)}}
+.card{border:1px solid var(--border);background:linear-gradient(180deg,var(--surface),#0F1526);padding:20px;border-radius:16px;width:100%;margin:14px 0;box-shadow:0 10px 40px rgba(0,0,0,.4);text-align:left}
+.card p{margin:10px 0;line-height:1.5}
+.card.alert{border-color:rgba(255,92,122,.6);box-shadow:0 0 30px rgba(255,92,122,.2)}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:rgba(52,211,153,.15);color:var(--green);font-weight:800;font-size:14px}
+button{font:inherit;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--blue),#6C5CFF);border:0;padding:14px 24px;border-radius:12px;margin:8px;font-size:16px;box-shadow:0 8px 24px rgba(79,124,255,.4);transition:transform .15s}
+button:hover{transform:translateY(-2px) scale(1.03)}
+button.alt{background:linear-gradient(135deg,var(--red),#FF8A5C);box-shadow:0 8px 24px rgba(255,92,122,.4)}
+button.ghost{background:transparent;border:1px solid var(--border);box-shadow:none;color:var(--text)}
+.row{margin:16px 0;text-align:left;width:100%;font-size:15px}
+.bar{height:12px;background:#1d2645;border-radius:8px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width 1.6s ease-out;border-radius:8px}
+.bar.bad i{background:var(--red)}
+.bar.flick i{background:linear-gradient(90deg,var(--gold),var(--red));animation:flick .4s infinite alternate}
+@keyframes flick{from{opacity:.3}to{opacity:1}}
+.line{opacity:0;transform:translateX(-20px);transition:all .5s;margin:12px 0;line-height:1.5}
+.line.show{opacity:1;transform:none}
+.stamp{display:inline-block;border:3px solid var(--green);color:var(--green);padding:8px 14px;border-radius:8px;font-size:clamp(16px,4.6vw,24px);font-weight:900;transform:rotate(-5deg) scale(3);opacity:0;transition:all .4s cubic-bezier(.2,2,.4,1)}
+.stamp.show{transform:rotate(-5deg) scale(1);opacity:1}
+.err{font-size:clamp(60px,20vw,130px);font-weight:900;color:var(--red);margin:0;line-height:1}
+.pbar{width:100%;height:24px;border:1px solid var(--border);border-radius:999px;overflow:hidden;background:#1d2645}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#FF8A5C);transition:width 2.4s linear}
+.hidden{display:none!important}
+.msg{font-family:var(--serif);font-size:clamp(17px,4.4vw,22px);line-height:1.7;color:#fff}
+.legend{font-size:clamp(22px,6vw,36px);font-weight:900;color:var(--gold);text-shadow:0 0 24px rgba(251,191,36,.6);margin:0}
+.cert{width:100%;background:linear-gradient(160deg,#0F1733,#0B1020);color:#E8ECF8;border:2px solid var(--gold);outline:6px solid rgba(251,191,36,.25);outline-offset:-12px;border-radius:12px;padding:32px 20px;font-family:var(--serif);margin-top:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.cert h3{margin:0;font-size:clamp(20px,5vw,28px);letter-spacing:3px;color:var(--gold)}
+.cert .name{font-size:clamp(28px,8vw,46px);font-weight:800;color:#fff;margin:10px 0}
+.cert ul{list-style:none;padding:0;text-align:left;display:inline-block;margin:8px 0;font-family:var(--font);font-size:15px}
+.cert li{margin:7px 0}
+.cert .status{display:inline-block;border:2px solid var(--green);color:var(--green);font-family:var(--font);font-weight:800;padding:6px 14px;border-radius:8px;transform:rotate(-3deg);margin:10px}
+.cert small{font-family:var(--font);color:var(--muted)}
+.by{font-family:var(--font);font-weight:900;font-size:18px;letter-spacing:.02em;margin-top:14px}
+.by .g{color:#fff}.by .ai{color:var(--blue)}
+.fall{position:fixed;top:-30px;z-index:70;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media print{
+  body{background:#fff!important}
+  .siren,#aura,.noprint,.fall{display:none!important}
+  .screen:not(#s6){display:none!important}
+  #s6{display:flex!important;min-height:0;padding:0}
+  #s6>.legend,#s6>.sub{display:none!important}
+}
+</style>
+</head>
+<body>
+<div class="siren"></div>
+<div id="aura">AURA: <span id="auraNum">0</span></div>
+
+<!-- 1 -->
+<section class="screen active" id="s1">
+  <h1 class="red glitch" data-t="🚨 SCHOOL SECURITY ALERT 🚨">🚨 SCHOOL SECURITY ALERT 🚨</h1>
+  <div class="card alert">
+    <p>A teacher is attempting to leave the premises.</p>
+    <p>IDENTIFIED: <b class="gold">Sir Ajay Kumar</b></p>
+    <p>Subject: Physics ⚡</p>
+    <p>Threat Level: <span class="badge">Extremely Friendly 😂</span></p>
+  </div>
+  <button class="alt" onclick="go(2)">START INVESTIGATION</button>
+</section>
+
+<!-- 2 -->
+<section class="screen" id="s2">
+  <h2 class="cyan">🧪 SIR AJAY KUMAR — PHYSICS REPORT</h2>
+  <div class="card">
+    <div class="row">⚡ Physics knowledge: <b>100%</b><div class="bar"><i data-w="100"></i></div></div>
+    <div class="row">😂 Jokes with students: <b><span class="inf">∞</span>%</b><div class="bar"><i data-w="100"></i></div></div>
+    <div class="row">🛡️ Protecting students from Principal: <b>99.99%</b><div class="bar"><i data-w="99.99"></i></div></div>
+    <div class="row">📱 Detecting mobile phones: <b>0%</b><div class="bar bad"><i data-w="1"></i></div><small style="color:var(--muted)">(when he chooses not to detect them 😭)</small></div>
+    <div class="row">🤐 Keeping student secrets: <b class="gold">LEGENDARY</b><div class="bar"><i data-w="100"></i></div></div>
+    <div class="row">😎 Aura level: <b class="red glitch" data-t="ERROR">ERROR</b> <small style="color:var(--muted)">(too high to measure)</small><div class="bar flick"><i data-w="100"></i></div></div>
+    <p>👨‍🏫 Teacher ❌<br>🤝 <b class="green">Friend disguised as teacher</b></p>
+  </div>
+  <button onclick="go(3)">OPEN CLASSIFIED FILE 🔓</button>
+</section>
+
+<!-- 3 -->
+<section class="screen" id="s3">
+  <h2 class="red">🚨 CLASSIFIED FILE</h2>
+  <div class="card alert">
+    <p class="red"><b>CONFIDENTIAL — DO NOT SHOW PRINCIPAL</b></p>
+    <p>Sir Ajay has been involved in several suspicious activities:</p>
+    <div class="line">📱 Ignoring students using mobile phones</div>
+    <div class="line">🛡️ Protecting students during Principal investigations</div>
+    <div class="line">😂 Making the class laugh during physics</div>
+    <div class="line">🤐 Knowing things he definitely should not know</div>
+    <div class="line">😎 Carrying so much aura that our scanners crashed</div>
+    <div class="line">❤️ Treating students like friends</div>
+    <p>CASE STATUS:</p>
+    <div class="stamp" id="stamp">TOO WHOLESOME TO ARREST ❤️</div>
+  </div>
+  <button onclick="go(4)">FINAL EXIT INTERVIEW ➜</button>
+</section>
+
+<!-- 4 -->
+<section class="screen" id="s4">
+  <h2 class="gold">😂 FINAL EXIT INTERVIEW</h2>
+  <div id="ask">
+    <p style="font-size:22px;font-weight:600">Sir, why are you leaving?</p>
+    <button onclick="pick('leave')">Career 😎</button>
+    <button onclick="pick('leave')">New Adventure 🚀</button>
+    <button onclick="pick('leave')">You guys finally became too much 😂</button>
+    <button class="alt" onclick="pick('stay')">I'M NOT LEAVING</button>
+  </div>
+  <div id="e404" class="hidden">
+    <p class="err glitch" data-t="ERROR 404">ERROR 404</p>
+    <p class="red" style="font-size:22px;font-weight:800">Correct answer not found.</p>
+    <p class="gold" style="font-size:20px">Sir Ajay is officially impossible to replace. 💀</p>
+    <button class="alt" onclick="go(5)">REMOVE HIM ANYWAY</button>
+  </div>
+  <div id="stay" class="hidden">
+    <p class="err green" style="font-size:clamp(50px,16vw,100px);color:var(--green)">✅ 200 OK</p>
+    <p class="green" style="font-size:22px;font-weight:800">Correct answer found!</p>
+    <p class="gold" style="font-size:20px">Resignation rejected by the whole Matric (10th) class. 🎉</p>
+    <p style="color:var(--muted)">Sir Ajay is staying. (In our hearts, forever.)</p>
+    <button onclick="go(5)">Nice try, Sir 😄 — continue</button>
+  </div>
+</section>
+
+<!-- 5 -->
+<section class="screen" id="s5">
+  <div id="fail">
+    <h1 class="red glitch" data-t="🚨 SYSTEM FAILURE 🚨">🚨 SYSTEM FAILURE 🚨</h1>
+    <p>Attempting to remove Sir Ajay Kumar...</p>
+    <div class="pbar"><i id="pb"></i></div>
+    <p id="pct" style="font-size:22px;font-weight:800">0%</p>
+    <div id="failed" class="hidden">
+      <p class="err" style="font-size:56px">❌ FAILED</p>
+      <p class="gold">Reason: “This teacher has too many memories attached to him.”</p>
+    </div>
+  </div>
+  <div id="heart" class="hidden">
+    <p class="msg">Sir, jokes apart...<br><br>
+    You weren't just our Physics teacher.<br>
+    You were the teacher who joked with us, protected us, understood us, and stood by us when we needed it.<br><br>
+    We'll definitely miss having you around.<br>
+    Thank you for being more than just a teacher. ❤️<br><br>
+    <i>— Your Students</i></p>
+    <button onclick="go(6)">One last thing... 🏆</button>
+  </div>
+</section>
+
+<!-- 6 -->
+<section class="screen" id="s6">
+  <p class="legend">⚡ SIR AJAY KUMAR ⚡</p>
+  <p class="gold sub" style="font-size:18px;font-weight:600">PHYSICS TEACHER → CLASS LEGEND</p>
+  <div class="cert">
+    <h3>CERTIFICATE OF CLASS LEGEND</h3>
+    <p style="color:var(--muted)">Awarded to</p>
+    <div class="name">SIR AJAY KUMAR</div>
+    <p style="color:var(--muted)">For outstanding achievement in:</p>
+    <ul>
+      <li>⚡ Teaching Physics</li>
+      <li>😂 Making students laugh</li>
+      <li>🛡️ Protecting students from Principal</li>
+      <li>📱 Selectively ignoring mobile phones</li>
+      <li>🤐 Maintaining classified student information</li>
+      <li>😎 Aura beyond measurement</li>
+      <li>❤️ Being a teacher AND a friend</li>
+    </ul>
+    <div><small>Status:</small><br><span class="status">LEGEND — CANNOT BE REPLACED</span></div>
+    <p>Issued by the students of <b>Matric (10th)</b><br><small>30 September 2026</small></p>
+    <div class="by">By <span class="g">Gorav</span><span class="ai">AI</span></div>
+  </div>
+  <button class="noprint" onclick="window.print()">🖨️ PRINT CERTIFICATE</button>
+  <button class="noprint alt" onclick="party()">🎉 AURA +99999</button>
+</section>
+
+<script>
+var aura = 0, timers = [], auraIv = null;
+function addAura(n){
+  var end = aura + n, t = aura, el = document.getElementById("auraNum");
+  aura = end;
+  if(auraIv) clearInterval(auraIv);
+  var step = Math.max(1, Math.ceil((end - t)/30));
+  auraIv = setInterval(function(){ t = Math.min(end, t+step); el.textContent = t.toLocaleString(); if(t >= end){ clearInterval(auraIv); auraIv = null; } }, 25);
+}
+function go(n){
+  timers.forEach(clearTimeout); timers = [];
+  document.querySelectorAll(".screen").forEach(function(s){ s.classList.remove("active"); });
+  document.getElementById("s"+n).classList.add("active");
+  window.scrollTo(0,0);
+  addAura(n*1000);
+  if(n === 2){
+    document.querySelectorAll("#s2 .bar i").forEach(function(i){ i.style.width = "0"; setTimeout(function(){ i.style.width = i.dataset.w + "%"; }, 100); });
+  }
+  if(n === 3){
+    document.querySelectorAll("#s3 .line").forEach(function(l,k){ l.classList.remove("show"); timers.push(setTimeout(function(){ l.classList.add("show"); }, 500 + k*650)); });
+    var st = document.getElementById("stamp"); st.classList.remove("show");
+    timers.push(setTimeout(function(){ st.classList.add("show"); }, 4700));
+  }
+  if(n === 4){
+    document.getElementById("ask").classList.remove("hidden");
+    document.getElementById("e404").classList.add("hidden");
+    document.getElementById("stay").classList.add("hidden");
+  }
+  if(n === 5) runFail();
+  if(n === 6) party();
+}
+function pick(choice){
+  document.getElementById("ask").classList.add("hidden");
+  if(choice === "stay"){
+    document.getElementById("stay").classList.remove("hidden");
+    addAura(10000);
+    party();
+  } else {
+    document.getElementById("e404").classList.remove("hidden");
+    addAura(404);
+    document.body.animate([{transform:"translateX(-12px)"},{transform:"translateX(12px)"},{transform:"none"}],{duration:300,iterations:3});
+  }
+}
+function runFail(){
+  var pb = document.getElementById("pb"), pct = document.getElementById("pct");
+  document.getElementById("fail").classList.remove("hidden");
+  document.getElementById("heart").classList.add("hidden");
+  document.getElementById("failed").classList.add("hidden");
+  pb.style.transition = "none"; pb.style.width = "0"; pct.textContent = "0%";
+  timers.push(setTimeout(function(){ pb.style.transition = "width 2.4s linear"; pb.style.width = "100%"; }, 50));
+  var p = 0, iv = setInterval(function(){ p += 4; if(p >= 100){ p = 100; clearInterval(iv); } pct.textContent = p + "%"; }, 100);
+  timers.push(setTimeout(function(){ document.getElementById("failed").classList.remove("hidden"); }, 2700));
+  timers.push(setTimeout(function(){
+    document.getElementById("fail").classList.add("hidden");
+    document.getElementById("heart").classList.remove("hidden");
+  }, 6500));
+}
+function party(){
+  addAura(99999);
+  var e = ["⚡","❤️","🎉","🏆","😂","⭐","🔥"];
+  for(var i = 0; i < 60; i++){
+    var s = document.createElement("span");
+    s.className = "fall"; s.textContent = e[i % e.length];
+    s.style.left = Math.random()*100 + "vw";
+    s.style.fontSize = (18 + Math.random()*24) + "px";
+    s.style.animationDuration = (2 + Math.random()*3) + "s";
+    s.style.animationDelay = Math.random()*1.5 + "s";
+    document.body.appendChild(s);
+    setTimeout((function(x){ return function(){ x.remove(); }; })(s), 6500);
+  }
+}
+</script>
+</body>
+</html>
